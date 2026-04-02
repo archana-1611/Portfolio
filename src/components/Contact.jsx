@@ -14,7 +14,7 @@ const Contact = () => {
 
   return (
     <section id="contact" className="contact">
-      <motion.div 
+      <motion.div
         className="container"
         initial="hidden"
         whileInView="visible"
@@ -30,12 +30,12 @@ const Contact = () => {
           <div className="contact-info">
             <h2 className="heading-font">Let's Build <br /> <span className="text-gradient">Something Great</span></h2>
             <p>I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.</p>
-            
+
             <div className="social-links">
-               <motion.a whileHover={{ y: -5, scale: 1.1 }} href="https://github.com/Archana-2005" target="_blank" rel="noopener noreferrer" className="social-icon" title="GitHub"><Code /></motion.a>
-               <motion.a whileHover={{ y: -5, scale: 1.1 }} href="https://leetcode.com/u/Archana-2005/" target="_blank" rel="noopener noreferrer" className="social-icon" title="LeetCode"><Terminal /></motion.a>
-               <motion.a whileHover={{ y: -5, scale: 1.1 }} href="#" target="_blank" rel="noopener noreferrer" className="social-icon" title="LinkedIn"><Globe /></motion.a>
-               <motion.a whileHover={{ y: -5, scale: 1.1 }} href="#" target="_blank" rel="noopener noreferrer" className="social-icon" title="Share"><Share2 /></motion.a>
+              {/*<motion.a whileHover={{ y: -5, scale: 1.1 }} href="https://github.com/Archana-2005" target="_blank" rel="noopener noreferrer" className="social-icon" title="GitHub"><Code /></motion.a>
+              <motion.a whileHover={{ y: -5, scale: 1.1 }} href="https://leetcode.com/u/Archana-2005/" target="_blank" rel="noopener noreferrer" className="social-icon" title="LeetCode"><Terminal /></motion.a>
+              {/*<motion.a whileHover={{ y: -5, scale: 1.1 }} href="#" target="_blank" rel="noopener noreferrer" className="social-icon" title="LinkedIn"><Globe /></motion.a>
+               <motion.a whileHover={{ y: -5, scale: 1.1 }} href="#" target="_blank" rel="noopener noreferrer" className="social-icon" title="Share"><Share2 /></motion.a>*/}
             </div>
           </div>
 
@@ -52,8 +52,8 @@ const Contact = () => {
               <label>Message</label>
               <textarea placeholder="Tell me about your vision..." className="glass-input" rows="4"></textarea>
             </div>
-            <motion.button 
-              type="submit" 
+            <motion.button
+              type="submit"
               className="btn-primary submit-btn"
               whileHover={{ scale: 1.02, boxShadow: '0 0 20px var(--accent-glow)' }}
               whileTap={{ scale: 0.98 }}

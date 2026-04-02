@@ -114,7 +114,7 @@ const Hero = () => {
             transition={{ delay: 0.5, duration: 0.8 }}
             className="hero-desc"
           >
-            Full Stack Developer specializing in building exceptional digital experiences.
+            AI Engineer specializing in building exceptional digital experiences.
             Currently focused on creating accessible, human-centered products.
           </motion.p>
 
@@ -167,7 +167,7 @@ const Hero = () => {
               <code className="code-snippet">
                 <span className="code-keyword">const</span> <span className="code-var">developer</span> = {'{'}<br />
                 &nbsp;&nbsp;name: <span className="code-string">'Archana'</span>,<br />
-                &nbsp;&nbsp;role: <span className="code-string">'Full Stack'</span>,<br />
+                &nbsp;&nbsp;role: <span className="code-string">'AI Engineer'</span>,<br />
                 &nbsp;&nbsp;passion: <span className="code-string">'Clean Code'</span><br />
                 {'}'}
               </code>

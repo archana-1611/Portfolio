@@ -6,7 +6,7 @@ const Experience = () => {
   const experiences = [
     {
       id: 1,
-      role: 'Software Engineering Intern',
+      role: 'Machine Learning Intern',
       company: 'The Hindu',
       period: 'Aug 2025 – Nov 2025',
       location: 'Chennai, Tamil Nadu',
@@ -28,7 +28,7 @@ const Experience = () => {
     <section id="experience" className="experience relative">
       <div className="bg-glow absolute top-1/2 left-1/4 w-96 h-96 rounded-full mix-blend-screen opacity-20 animate-pulse pointer-events-none" style={{ filter: "blur(100px)", background: "var(--accent-glow)" }}></div>
 
-      <motion.div 
+      <motion.div
         className="container relative z-10"
         initial="hidden"
         whileInView="visible"
@@ -48,21 +48,21 @@ const Experience = () => {
               whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
             >
               <div className="card-glass-layer"></div>
-              
+
               <div className="exp-card-inner">
                 <div className="exp-card-header flex justify-between items-start flex-wrap gap-4">
                   <div className="role-info">
-                    <motion.div 
-                       className="badge-glow mb-4"
-                       initial={{ opacity: 0, scale: 0.8 }}
-                       whileInView={{ opacity: 1, scale: 1 }}
-                       transition={{ delay: 0.2 }}
+                    <motion.div
+                      className="badge-glow mb-4"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.2 }}
                     >
                       <Sparkles size={16} className="text-accent" />
                       <span>Featured Role</span>
                     </motion.div>
                     <h3 className="role-title">
-                       {exp.role}
+                      {exp.role}
                     </h3>
                     <div className="company-info flex items-center gap-3 font-semibold text-accent mb-4">
                       <Briefcase size={22} />
@@ -75,7 +75,7 @@ const Experience = () => {
                       </span>
                     </div>
                   </div>
-                  
+
                   <div className="meta-info flex flex-col items-end gap-2 text-secondary">
                     <div className="meta-tag glass">
                       <Calendar size={16} className="text-accent" />
@@ -93,7 +93,7 @@ const Experience = () => {
                 <div className="exp-card-body">
                   <ul className="impact-list">
                     {exp.description.map((point, i) => (
-                      <motion.li 
+                      <motion.li
                         key={i}
                         className="impact-item flex gap-4 items-start"
                         initial={{ opacity: 0, x: -20 }}
@@ -102,9 +102,9 @@ const Experience = () => {
                         whileHover={{ x: 10, color: "var(--text-primary)" }}
                       >
                         <div className="bullet-container mt-1">
-                           <div className="bullet-icon">
-                              <ArrowRight size={16} className="text-accent" />
-                           </div>
+                          <div className="bullet-icon">
+                            <ArrowRight size={16} className="text-accent" />
+                          </div>
                         </div>
                         <p className="impact-text">{point}</p>
                       </motion.li>
