@@ -111,13 +111,17 @@ const Header = () => {
           top: 0;
           left: 0;
           right: 0;
-          z-index: 1000;
+          z-index: 99999;
           padding: 1.5rem 0;
           transition: var(--transition-smooth);
         }
         .is-scrolled {
           padding: 1rem 0;
-          box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+          background: rgba(3, 0, 20, 0.85) !important;
+          backdrop-filter: blur(20px);
+          -webkit-backdrop-filter: blur(20px);
+          box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
         .header-content {
           display: flex;

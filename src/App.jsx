@@ -25,8 +25,7 @@ function App() {
         <Contact />
       </main>
       <footer className="container" style={{ padding: '3rem 0', textAlign: 'center', borderTop: '1px solid var(--glass-border)', color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
-        <p>© {new Date().getFullYear()} Archana J. All rights reserved.</p>
-        <p style={{ marginTop: '0.5rem' }}>Built with Passion & React.</p>
+        <p>© {new Date().getFullYear()} Archana J. All rights reserved. 2026</p>
       </footer>
     </div>
   );
