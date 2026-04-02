@@ -1,0 +1,24 @@
+ARCHANA J
++91 8072095395  •  archanaj16112006@gmail.com  •  linkedin.com/in/archana-j-799aa9366  •  github.com/archana-1611  •  Chennai, India
+PROFESSIONAL SUMMARY
+AI/Data Science undergraduate (GPA 9.4/10) with hands-on experience delivering 3 production-ready AI systems at The Hindu — achieving 94.3% ML model accuracy and 74% latency reduction. Proficient in Python, Machine Learning, Deep Learning, NLP, LangChain, and Google Gemini. Familiar with PyTorch and TensorFlow. Experienced in Agile/Scrum, Git, and cloud deployment (GCP).
+TECHNICAL SKILLS
+Languages: Python, Java, SQL    AI/ML: ML, Deep Learning, NLP, LangChain, Gemini API, Scikit-learn, PyTorch*, TensorFlow*, Pandas, NumPy    Visualisation: Matplotlib, Seaborn
+Databases: MongoDB, Qdrant (Vector DB), MySQL    Cloud & DevOps: GCP, Docker (basics), CI/CD    Tools: Streamlit, FastAPI, React Native, Git/GitHub, Jupyter    Methods: Agile/Scrum, Prompt Engineering
+* Familiar with
+WORK EXPERIENCE
+Software Engineering Intern  —  The Hindu	Aug – Nov 2025  |  Chennai, Tamil Nadu
+Built Fake News Detection System (Logistic Regression, Random Forest, Naive Bayes); 94.3% accuracy, F1-score 0.93 on 10,000+ articles with TF-IDF + NLTK preprocessing
+Developed NLP Email Automation Chatbot with intent recognition across 10+ categories; cut response latency 74% (4.2s → 1.1s) and manual handling by 60%
+Designed English Language Learning Game with gamified quizzes and adaptive content; boosted session engagement by 45%
+Delivered across 8 Agile sprints; maintained Git/GitHub codebase with zero critical bugs in production across all 3 systems
+KEY PROJECTS
+RAG-based Semantic Search App  |  Python, Qdrant, LangChain, MongoDB, Gemini, GCP
+Built RAG system using Qdrant vector DB + LangChain; improved retrieval relevance by 62% over keyword search; sub-500ms latency; deployed on GCP with prompt engineering for accurate generation
+Real vs Fake News Detection  |  Python, Scikit-learn, NLTK, Matplotlib, Seaborn, Streamlit
+End-to-end NLP pipeline (tokenisation, TF-IDF, lemmatisation) on 10,000+ articles; best classifier: 94.3% accuracy, F1 0.93, <200ms inference; visualised results with Matplotlib & Seaborn
+Email Automation Chatbot  |  Python, LangChain, Gemini API, Streamlit
+Multi-class intent classifier at 91.8% accuracy across 10+ email categories; <1.2s response; context-aware replies via Gemini + LangChain with conversation memory
+EDUCATION & CERTIFICATIONS
+B.Tech – Artificial Intelligence & Data Science  |  SIMATS University, Chennai	2023 – 2027 (Expected)  |  GPA: 9.4/10
+Certifications: Oracle Database SQL Certified Specialist  •  NPTEL – IoT (IIT Kharagpur)  •  NPTEL – Privacy & Security in OSM (IIT Madras)  •  Udemy – Master in Data Science  •  Udemy – SQL
