@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from 'framer-motion';
-import { ArrowRight, Globe, Mail } from 'lucide-react';
+import { ArrowRight, Globe, Mail, Download } from 'lucide-react';
 
 const GithubIcon = ({ size }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -35,12 +35,13 @@ const Hero = () => {
     { name: 'Mail', icon: <Mail size={20} />, href: 'mailto:archanaj16112005@gmail.com', color: '#ea4335' },
   ];
 
-  const HoverButton = ({ children, className, href, target, rel }) => {
+  const HoverButton = ({ children, className, href, target, rel, download }) => {
     return (
       <motion.a
         href={href}
         target={target}
         rel={rel}
+        download={download}
         className={className}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
@@ -89,14 +90,35 @@ const Hero = () => {
             <span>Available for new opportunities</span>
           </motion.div>
 
-          <motion.h2
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="hero-greeting"
+            className="hero-title-wrapper"
           >
-            Hi, I'm <span className="text-gradient font-bold">Archana J</span>
-          </motion.h2>
+            <h2 className="hero-greeting">
+              Hi, I'm <span className="text-gradient font-bold">Archana J</span>
+            </h2>
+            
+            <div className="hero-top-socials">
+              {socials.map((social, index) => (
+                <HoverButton
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="top-social-btn highlight-glow"
+                  title={social.name}
+                >
+                  <motion.div
+                    whileHover={{ color: social.color }}
+                  >
+                    {social.icon}
+                  </motion.div>
+                </HoverButton>
+              ))}
+            </div>
+          </motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -126,27 +148,14 @@ const Hero = () => {
               View My Work
               <ArrowRight size={18} />
             </HoverButton>
-
-            <div className="social-links-grid">
-              {socials.map((social, index) => (
-                <HoverButton
-                  key={social.name}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="social-icon-btn glass"
-                >
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.6 + index * 0.1 }}
-                    whileHover={{ color: social.color }}
-                  >
-                    {social.icon}
-                  </motion.div>
-                </HoverButton>
-              ))}
-            </div>
+            <HoverButton
+              href="/resume.pdf"
+              download="Archana_Resume.pdf"
+              className="btn-secondary"
+            >
+              Download Resume
+              <Download size={18} />
+            </HoverButton>
           </div>
         </motion.div>
 
@@ -221,11 +230,64 @@ const Hero = () => {
           border: 1px solid var(--glass-border);
         }
 
+        .hero-title-wrapper {
+          display: flex;
+          align-items: center;
+          gap: 1.5rem;
+          margin-bottom: 1rem;
+          flex-wrap: wrap;
+        }
+
         .hero-greeting {
           font-size: 1.25rem;
           font-weight: 500;
           color: var(--text-secondary);
-          margin-bottom: 1rem;
+          margin-bottom: 0;
+        }
+
+        .hero-top-socials {
+          display: flex;
+          gap: 0.8rem;
+        }
+
+        .top-social-btn {
+          width: 36px;
+          height: 36px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          color: white;
+          background: rgba(255, 255, 255, 0.05);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          transition: var(--transition-smooth, all 0.3s ease);
+        }
+
+        .top-social-btn:hover {
+          border-color: var(--accent-primary);
+          transform: translateY(-3px);
+        }
+
+        .highlight-glow {
+          position: relative;
+        }
+
+        .highlight-glow::before {
+          content: '';
+          position: absolute;
+          inset: -2px;
+          border-radius: 50%;
+          background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+          z-index: -1;
+          filter: blur(8px);
+          opacity: 0.7;
+          animation: pulseSocialGlow 2s infinite alternate;
+        }
+
+        @keyframes pulseSocialGlow {
+          0% { filter: blur(8px); opacity: 0.5; }
+          100% { filter: blur(12px); opacity: 0.9; }
         }
 
         .hero-main-title {
@@ -263,6 +325,26 @@ const Hero = () => {
           font-size: 1rem;
           box-shadow: 0 10px 30px -10px var(--accent-glow);
           transition: none; /* Controlled by Framer Motion */
+        }
+
+        .btn-secondary {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.75rem;
+          padding: 1.1rem 2.2rem;
+          background: rgba(255, 255, 255, 0.05);
+          color: white;
+          border-radius: 16px;
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          backdrop-filter: blur(10px);
+          font-weight: 700;
+          font-size: 1rem;
+          transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+          background: rgba(255, 255, 255, 0.1);
+          border-color: var(--accent-primary);
         }
 
         .social-links-grid {

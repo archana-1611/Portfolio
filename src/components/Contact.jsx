@@ -3,6 +3,29 @@ import { motion } from 'framer-motion';
 import { Send, Globe, Code, Share2, Terminal } from 'lucide-react';
 
 const Contact = () => {
+  const [status, setStatus] = React.useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString()
+    })
+      .then(() => {
+        setStatus('Message sent successfully!');
+        form.reset();
+        setTimeout(() => setStatus(''), 5000);
+      })
+      .catch((error) => {
+        setStatus('Failed to send message. Please try again.');
+        console.error(error);
+      });
+  };
+
   const containerVariants = {
     hidden: { opacity: 0, x: 80 },
     visible: {
@@ -39,19 +62,31 @@ const Contact = () => {
             </div>
           </div>
 
-          <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
+          <form className="contact-form" onSubmit={handleSubmit} name="contact" data-netlify="true" method="POST">
+            <input type="hidden" name="form-name" value="contact" />
             <div className="form-group">
               <label>Full Name</label>
-              <input type="text" placeholder="Archana J" className="glass-input" />
+              <input type="text" name="name" placeholder="Archana J" className="glass-input" required />
             </div>
             <div className="form-group">
               <label>Email Address</label>
-              <input type="email" placeholder="archana@example.com" className="glass-input" />
+              <input type="email" name="email" placeholder="archana@example.com" className="glass-input" required />
             </div>
             <div className="form-group">
               <label>Message</label>
-              <textarea placeholder="Tell me about your vision..." className="glass-input" rows="4"></textarea>
+              <textarea name="message" placeholder="Tell me about your vision..." className="glass-input" rows="4" required></textarea>
             </div>
+            
+            {status && (
+              <motion.div 
+                initial={{ opacity: 0, y: -10 }} 
+                animate={{ opacity: 1, y: 0 }} 
+                className={`status-message ${status.includes('success') ? 'success' : 'error'}`}
+              >
+                {status}
+              </motion.div>
+            )}
+
             <motion.button
               type="submit"
               className="btn-primary submit-btn"
@@ -123,6 +158,23 @@ const Contact = () => {
           cursor: pointer;
           display: flex;
           align-items: center;
+        }
+        .status-message {
+          padding: 1rem;
+          border-radius: 12px;
+          font-weight: 600;
+          text-align: center;
+          margin-top: 0.5rem;
+        }
+        .status-message.success {
+          background: rgba(39, 201, 63, 0.1);
+          color: #27c93f;
+          border: 1px solid rgba(39, 201, 63, 0.2);
+        }
+        .status-message.error {
+          background: rgba(255, 95, 86, 0.1);
+          color: #ff5f56;
+          border: 1px solid rgba(255, 95, 86, 0.2);
         }
         @media (max-width: 968px) {
           .contact-grid { grid-template-columns: 1fr; padding: 3rem; gap: 3rem; }
