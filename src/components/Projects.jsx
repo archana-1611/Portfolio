@@ -13,8 +13,9 @@ const Projects = () => {
         'Score and performance tracking system',
       ],
       tags: ['HTML', 'Python', 'Pandas', 'NumPy', 'NLP Techniques'],
-      //github: '#',
-      //demo: '#'
+      image: '/projects/word_parkour.png',
+      github: '#',
+      demo: '#'
     },
     {
       title: 'Real vs Fake News Detection',
@@ -25,8 +26,9 @@ const Projects = () => {
         'Interactive Streamlit web interface'
       ],
       tags: ['Python', 'Scikit-learn', 'NLP', 'Streamlit'],
-      //github: '#',
-      //demo: '#'
+      image: '/projects/fake_news.png',
+      github: '#',
+      demo: '#'
     },
     {
       title: 'Email Automation Chatbot',
@@ -37,8 +39,9 @@ const Projects = () => {
         'Streamlines response times through automation'
       ],
       tags: ['FastAPI', 'Vertex AI', 'Python', 'GCP'],
-      //github: '#',
-      //demo: '#'
+      image: '/projects/email_chatbot.png',
+      github: '#',
+      demo: '#'
     }
   ];
 
@@ -79,7 +82,7 @@ const Projects = () => {
         className="container"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false, margin: "-100px" }}
+        viewport={{ once: true, margin: "-100px" }}
         variants={sectionVariants}
       >
         <div className="section-header">
@@ -95,24 +98,29 @@ const Projects = () => {
             <motion.div
               key={project.title}
               variants={projectVariants}
-              whileHover={{ y: -5, transition: { duration: 0.2 } }}
+              whileHover={{ y: -8, transition: { duration: 0.2 } }}
               className="project-card glass"
             >
+              <div className="project-image-container">
+                <img src={project.image} alt={project.title} className="project-image" />
+                <div className="project-overlay"></div>
+                <div className="project-links-overlay">
+                  {project.demo && (
+                    <a href={project.demo} target="_blank" rel="noopener noreferrer" className="btn-primary" aria-label="Live demo">
+                      <ExternalLink size={18} /> Live Demo
+                    </a>
+                  )}
+                  {project.github && (
+                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn-secondary" aria-label="Github code">
+                      <Code size={18} /> Source
+                    </a>
+                  )}
+                </div>
+              </div>
+
               <div className="project-details">
                 <div className="project-header">
                   <h3>{project.title}</h3>
-                  <div className="project-links">
-                    {project.github && (
-                      <a href={project.github} target="_blank" rel="noopener noreferrer" className="icon-link-sm" aria-label="Github code">
-                        <Code size={20} />
-                      </a>
-                    )}
-                    {project.demo && (
-                      <a href={project.demo} target="_blank" rel="noopener noreferrer" className="icon-link-sm" aria-label="Live demo">
-                        <ExternalLink size={20} />
-                      </a>
-                    )}
-                  </div>
                 </div>
 
                 <p className="project-desc">{project.desc}</p>
@@ -139,13 +147,13 @@ const Projects = () => {
       <style>{`
         .project-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-          gap: 3rem;
+          grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+          gap: 2.5rem;
         }
         .project-card {
-          border-radius: 32px;
+          border-radius: 24px;
           overflow: hidden;
-          background: rgba(255, 255, 255, 0.02);
+          background: rgba(30, 41, 59, 0.4);
           border: 1px solid var(--glass-border);
           transition: border-color 0.3s ease, box-shadow 0.3s ease;
           display: flex;
@@ -153,96 +161,174 @@ const Projects = () => {
         }
         .project-card:hover {
           border-color: var(--accent-primary);
-          box-shadow: 0 25px 50px -12px rgba(56, 189, 248, 0.15);
+          box-shadow: 0 25px 50px -12px rgba(56, 189, 248, 0.2);
         }
-        .project-details { 
-          padding: 3rem; 
-          display: flex;
-          flex-direction: column;
-          flex-grow: 1;
+        
+        .project-image-container {
+          position: relative;
+          width: 100%;
+          height: 220px;
+          overflow: hidden;
         }
-        .project-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
-          margin-bottom: 1.5rem;
-          gap: 1rem;
+        
+        .project-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.5s ease;
         }
-        .project-header h3 { 
-          font-size: 1.85rem; 
-          font-weight: 800; 
-          margin: 0;
-          line-height: 1.3;
+        
+        .project-card:hover .project-image {
+          transform: scale(1.05);
         }
-        .project-links {
-          display: flex;
-          gap: 0.75rem;
+        
+        .project-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to top, rgba(3, 0, 20, 0.9), transparent);
+          z-index: 1;
         }
-        .icon-link-sm {
-          color: var(--text-secondary);
-          transition: color 0.2s ease, transform 0.2s ease;
+        
+        .project-links-overlay {
+          position: absolute;
+          inset: 0;
           display: flex;
           align-items: center;
           justify-content: center;
-          background: rgba(255, 255, 255, 0.05);
-          width: 42px;
-          height: 42px;
-          border-radius: 50%;
+          gap: 1rem;
+          opacity: 0;
+          z-index: 2;
+          background: rgba(3, 0, 20, 0.6);
+          backdrop-filter: blur(4px);
+          transition: opacity 0.3s ease;
         }
-        .icon-link-sm:hover {
-          color: var(--accent-primary);
+        
+        .project-card:hover .project-links-overlay {
+          opacity: 1;
+        }
+        
+        .btn-primary, .btn-secondary {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.6rem 1.2rem;
+          border-radius: 12px;
+          font-size: 0.9rem;
+          font-weight: 600;
+          transition: all 0.2s ease;
+          cursor: pointer;
+        }
+        
+        .btn-primary {
+          background: var(--accent-primary);
+          color: #000;
+          box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
+        }
+        
+        .btn-primary:hover {
+          background: #fff;
+          transform: translateY(-2px);
+          box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn-secondary {
           background: rgba(255, 255, 255, 0.1);
+          color: var(--text-primary);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-secondary:hover {
+          background: rgba(255, 255, 255, 0.2);
           transform: translateY(-2px);
         }
+
+        .project-details { 
+          padding: 2rem 2.5rem; 
+          display: flex;
+          flex-direction: column;
+          flex-grow: 1;
+          margin-top: -10px;
+          position: relative;
+          z-index: 3;
+        }
+        
+        .project-header {
+          margin-bottom: 1rem;
+        }
+        
+        .project-header h3 { 
+          font-size: 1.6rem; 
+          font-weight: 700; 
+          margin: 0;
+          line-height: 1.3;
+          color: var(--text-primary);
+        }
+        
         .project-desc { 
           color: var(--text-secondary); 
-          font-size: 1.05rem; 
-          line-height: 1.7; 
-          margin-bottom: 2rem; 
+          font-size: 1rem; 
+          line-height: 1.6; 
+          margin-bottom: 1.5rem; 
         }
+        
         .project-features {
           list-style: none;
           padding: 0;
-          margin: 0 0 2.5rem 0;
+          margin: 0 0 2rem 0;
           display: flex;
           flex-direction: column;
-          gap: 0.85rem;
+          gap: 0.6rem;
         }
+        
         .project-features li {
           display: flex;
           align-items: flex-start;
           gap: 0.75rem;
-          color: var(--text-secondary);
-          font-size: 0.95rem;
-          line-height: 1.5;
+          color: rgba(255,255,255,0.7);
+          font-size: 0.9rem;
+          line-height: 1.4;
         }
+        
         .feature-icon {
           color: var(--accent-primary);
           flex-shrink: 0;
-          margin-top: 3px;
+          margin-top: 2px;
         }
+        
         .project-footer-tags { 
           display: flex; 
-          gap: 0.75rem; 
+          gap: 0.6rem; 
           flex-wrap: wrap; 
           margin-top: auto;
-          padding-top: 2rem;
-          border-top: 1px solid var(--glass-border);
+          padding-top: 1.5rem;
+          border-top: 1px solid rgba(255,255,255,0.05);
         }
+        
         .tag {
           font-size: 0.75rem;
           color: var(--accent-primary);
-          background: var(--accent-glow);
-          padding: 8px 14px;
-          border-radius: 8px;
-          font-weight: 700;
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
+          background: rgba(56, 189, 248, 0.1);
+          padding: 6px 12px;
+          border-radius: 6px;
+          font-weight: 600;
           border: 1px solid rgba(56, 189, 248, 0.2);
+          transition: all 0.2s ease;
         }
+        
+        .project-card:hover .tag {
+          background: rgba(56, 189, 248, 0.15);
+          border-color: rgba(56, 189, 248, 0.3);
+        }
+        
         @media (max-width: 768px) {
-          .project-details { padding: 2rem; }
-          .project-header h3 { font-size: 1.5rem; }
+          .project-details { padding: 1.5rem; }
+          .project-header h3 { font-size: 1.4rem; }
+          .project-links-overlay {
+            opacity: 1;
+            background: linear-gradient(to top, rgba(3,0,20,0.9) 0%, transparent 100%);
+            align-items: flex-end;
+            padding-bottom: 1rem;
+          }
         }
       `}</style>
     </section>
@@ -257,3 +343,4 @@ const ArrowRight = ({ size, style, className }) => (
 );
 
 export default Projects;
+
